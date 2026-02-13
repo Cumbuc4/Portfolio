@@ -32,15 +32,15 @@ export function LanguageSelector() {
   const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent | PointerEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("pointerdown", handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("pointerdown", handleClickOutside);
     };
   }, []);
 
@@ -56,6 +56,8 @@ export function LanguageSelector() {
         size="s"
         onClick={() => setIsOpen(!isOpen)}
         className="nav-button"
+        aria-haspopup="menu"
+        aria-expanded={isOpen}
       >
         {languageCodes[language as keyof typeof languageCodes]}
       </Button>
@@ -63,6 +65,7 @@ export function LanguageSelector() {
       {isOpen && (
         <Flex
           vertical="start"
+          className="language-dropdown"
           style={{
             position: "absolute",
             top: "100%",
@@ -74,8 +77,12 @@ export function LanguageSelector() {
             borderRadius: "16px",
             padding: "8px",
             boxShadow: "0 8px 32px rgba(6, 10, 12, 0.2)",
-            zIndex: 1000,
-            minWidth: "140px"
+            zIndex: 1100,
+            minWidth: "140px",
+            maxWidth: "calc(100vw - 24px)",
+            maxHeight: "min(70vh, 360px)",
+            overflowY: "auto",
+            overscrollBehavior: "contain"
           }}
         >
           {Object.entries(languageNames).map(([code, name]) => (
@@ -84,6 +91,7 @@ export function LanguageSelector() {
               variant="tertiary"
               size="s"
               onClick={() => handleLanguageChange(code)}
+              className="language-option"
               style={{
                 borderRadius: "12px",
                 padding: "8px 12px",

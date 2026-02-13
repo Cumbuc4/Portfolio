@@ -1,4 +1,4 @@
-export function formatDate(date: string, includeRelative = false) {
+export function formatDate(date: string, includeRelative = false, locale = "en-US") {
   const currentDate = new Date();
 
   if (!date.includes("T")) {
@@ -22,7 +22,7 @@ export function formatDate(date: string, includeRelative = false) {
     formattedDate = "Today";
   }
 
-  const fullDate = targetDate.toLocaleString("en-us", {
+  const fullDate = targetDate.toLocaleString(locale, {
     month: "long",
     day: "numeric",
     year: "numeric",
@@ -32,5 +32,19 @@ export function formatDate(date: string, includeRelative = false) {
     return fullDate;
   }
 
-  return `${fullDate} (${formattedDate})`;
+  let relative = formattedDate;
+  if (typeof Intl !== "undefined" && Intl.RelativeTimeFormat) {
+    const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
+    if (yearsAgo > 0) {
+      relative = rtf.format(-yearsAgo, "year");
+    } else if (monthsAgo > 0) {
+      relative = rtf.format(-monthsAgo, "month");
+    } else if (daysAgo > 0) {
+      relative = rtf.format(-daysAgo, "day");
+    } else {
+      relative = rtf.format(0, "day");
+    }
+  }
+
+  return `${fullDate} (${relative})`;
 }

@@ -5,9 +5,6 @@ const baseURL = "https://buenodevsec.com.br";
 
 const routes = {
   "/": true,
-  "/about": true,
-  "/work": true,
-  "/certifications": true,
 };
 
 const display = {
@@ -22,39 +19,11 @@ const protectedRoutes = {
   "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
 };
 
-// Import and set font for each variant
-import { Inter } from "next/font/google";
-import { JetBrains_Mono } from "next/font/google";
-
-const heading = Inter({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const body = Inter({
-  variable: "--font-body",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const label = Inter({
-  variable: "--font-label",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const code = JetBrains_Mono({
-  variable: "--font-code",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 const fonts = {
-  heading: heading,
-  body: body,
-  label: label,
-  code: code,
+  heading: { variable: "" },
+  body: { variable: "" },
+  label: { variable: "" },
+  code: { variable: "" },
 };
 
 // default customization applied to the HTML in the main layout.tsx

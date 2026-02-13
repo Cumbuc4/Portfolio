@@ -20,13 +20,23 @@
       "title": "最近のWrite-ups",
       "subtitle": "セキュリティ、ペンテスティング、開発に関する最新の記事とWrite-ups",
       "viewAll": "すべて見る"
+    },
+    "metrics": {
+      "devLabel": "開発経験",
+      "pentestLabel": "ペンテスト経験",
+      "unitWeek": "週",
+      "unitWeeks": "週",
+      "unitMonth": "か月",
+      "unitMonths": "か月",
+      "unitYear": "年",
+      "unitYears": "年"
     }
   },
   "about": {
     "title": "私について",
     "description": "テクノロジーとセキュリティに情熱を持つサイバーセキュリティスペシャリスト",
     "name": "レアンドロ・ガブリエル",
-    "role": "サイバーセキュリティスペシャリスト & フルスタック開発者",
+    "role": "Red Teamオペレーター＆フルスタック開発者",
     "social": {
       "github": "🐙 GitHub",
       "linkedin": "💼 LinkedIn",
@@ -39,10 +49,10 @@
     "workExperience": {
       "title": "職歴",
       "currentJob": {
-        "title": "情報セキュリティ技術者",
+        "title": "Junior - Red Team",
         "company": "NOX5 Offensive Security",
         "period": "2024 - 現在",
-        "description1": "企業のアイデンティティとアクセス管理のためのActive DirectoryとMicrosoft 365環境の管理と最適化。",
+        "description1": "Red Teamとペンテストの業務で、エクスプロイト、自動化、技術レポートに注力。",
         "description2": "FortinetとSophosファイアウォールを使用したネットワークインフラストラクチャの設定と保護、高度なセキュリティポリシーの実装。",
         "description3": "セキュリティと運用タスクの自動化のためのスクリプト開発、企業の防御の効率性と回復力に貢献。"
       },
@@ -74,6 +84,12 @@
     },
     "technicalSkills": {
       "title": "技術的スキル",
+      "groups": {
+        "programming": "プログラミング",
+        "frameworks": "フレームワーク",
+        "tools": "ツール",
+        "security": "セキュリティ"
+      },
       "development": {
         "title": "開発",
         "python": "Python",
@@ -117,16 +133,40 @@
     "title": "認定",
     "subtitle": "認定 & バッジ",
     "description": "技術とセキュリティの専門認定",
+    "stats": {
+      "total": "総数",
+      "categories": "カテゴリ",
+      "issuers": "発行者"
+    },
     "viewCert": "認定を見る",
     "issuedBy": "発行者"
   },
   "common": {
     "loading": "読み込み中...",
     "error": "読み込みエラー",
-    "noData": "データが見つかりません"
+    "noData": "データが見つかりません",
+    "previous": "前へ",
+    "next": "次へ",
+    "comingSoon": "近日公開",
+    "comingSoonSubtitle": "新しいWrite-upを準備中です。",
+    "play": "再生",
+    "pause": "一時停止",
+    "showTimeline": "タイムラインを表示",
+    "showMoreSkills": "スキルをさらに表示",
+    "onThisPage": "このページ内"
   },
   "footer": {
     "copyright": "全著作権所有。",
     "madeWith": "❤️とNext.jsで作成"
+  },
+  "contact": {
+    "kicker": "連絡先",
+    "title": "話しましょう",
+    "subtitle": "連絡手段を選んでください。すぐに返信します。",
+    "email": "メールを送る",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
   }
-} 
+}

@@ -48,6 +48,7 @@ const imageHashMap: Record<string, string> = {
   // Hack The Box
   'htb_academician': '/images/certifications/htb/academician.png',
   'htb_your_request': '/images/certifications/htb/your-request-is-my-demand.png',
+  'htb_expressway_cover': '/images/coverMdx/htb-expressway.png',
   
   // Outras imagens do site
   'avatar': '/images/avatar.jpg',

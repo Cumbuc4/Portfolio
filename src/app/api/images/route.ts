@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getImageUrl, isValidImageHash, getBaseHash } from '@/utils/imageHash';
+import { getImageUrl, getBaseHash } from '@/utils/imageHash';
 import { readFile } from 'fs/promises';
 import { join } from 'path';
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {

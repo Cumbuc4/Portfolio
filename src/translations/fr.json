@@ -20,13 +20,23 @@
       "title": "Write-ups Récents",
       "subtitle": "Derniers articles et write-ups sur la sécurité, le pentesting et le développement",
       "viewAll": "Voir Tout"
+    },
+    "metrics": {
+      "devLabel": "Expérience en développement",
+      "pentestLabel": "Expérience en pentest",
+      "unitWeek": "semaine",
+      "unitWeeks": "semaines",
+      "unitMonth": "mois",
+      "unitMonths": "mois",
+      "unitYear": "an",
+      "unitYears": "ans"
     }
   },
   "about": {
     "title": "À propos de moi",
     "description": "Spécialiste en cybersécurité et développeur passionné par la technologie",
     "name": "Leandro Gabriel",
-    "role": "Spécialiste en Cybersécurité & Développeur Full Stack",
+    "role": "Opérateur Red Team & Développeur Full Stack",
     "social": {
       "github": "🐙 GitHub",
       "linkedin": "💼 LinkedIn",
@@ -39,10 +49,10 @@
     "workExperience": {
       "title": "Expérience Professionnelle",
       "currentJob": {
-        "title": "Technicien en Sécurité de l'Information",
+        "title": "Junior - Red Team",
         "company": "NOX5 Offensive Security",
         "period": "2024 - Présent",
-        "description1": "Administration et optimisation d'environnements Active Directory et Microsoft 365 pour la gestion des identités et accès d'entreprise.",
+        "description1": "Interventions en Red Team et pentest, axées sur l'exploitation, l'automatisation et les rapports techniques.",
         "description2": "Configuration et protection d'infrastructure réseau avec des firewalls Fortinet et Sophos, implémentant des politiques de sécurité avancées.",
         "description3": "Développement de scripts pour l'automatisation des tâches de sécurité et d'opération, contribuant à l'efficacité et la résilience de la défense de l'entreprise."
       },
@@ -74,6 +84,12 @@
     },
     "technicalSkills": {
       "title": "Compétences Techniques",
+      "groups": {
+        "programming": "Programmation",
+        "frameworks": "Frameworks",
+        "tools": "Outils",
+        "security": "Sécurité"
+      },
       "development": {
         "title": "Développement",
         "python": "Python",
@@ -117,16 +133,40 @@
     "title": "Certifications",
     "subtitle": "Certifications et Badges",
     "description": "Certifications professionnelles en technologie et sécurité",
+    "stats": {
+      "total": "Total des certificats",
+      "categories": "Catégories",
+      "issuers": "Émetteurs"
+    },
     "viewCert": "Voir les Certifications",
     "issuedBy": "Émises par"
   },
   "common": {
     "loading": "Chargement...",
     "error": "Erreur de chargement",
-    "noData": "Aucune donnée trouvée"
+    "noData": "Aucune donnée trouvée",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "comingSoon": "Bientôt",
+    "comingSoonSubtitle": "Nouveau write-up à venir.",
+    "play": "Lire",
+    "pause": "Pause",
+    "showTimeline": "Voir la chronologie",
+    "showMoreSkills": "Voir plus de compétences",
+    "onThisPage": "Sur cette page"
   },
   "footer": {
     "copyright": "Tous droits réservés.",
     "madeWith": "Fait avec ❤️ et Next.js"
+  },
+  "contact": {
+    "kicker": "Contact",
+    "title": "Parlons",
+    "subtitle": "Choisissez un canal pour me contacter et obtenir une réponse rapide.",
+    "email": "Envoyer un e-mail",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
   }
-} 
+}

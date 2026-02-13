@@ -1,160 +1,194 @@
 "use client";
 
-import { Column, Flex, Heading, Text, Button } from "@once-ui-system/core";
+import { useEffect, useState } from "react";
+import { Column, Flex, Heading, Text, Button, Avatar } from "@once-ui-system/core";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Link from "next/link";
+import { person, contact } from "@/resources/content";
+import { RecentWriteups } from "@/components/home/RecentWriteups";
+import CertificationsCarousel from "@/components/certifications/CertificationsCarousel";
+import AboutContent from "@/components/about/AboutContent";
 
 export default function HomePage() {
   const { t, language } = useLanguage();
+  const [today, setToday] = useState(new Date());
+  const [devStart] = useState(() => new Date("2021-01-01"));
+  const [pentestStart] = useState(() => new Date("2025-03-01"));
 
-  // Função para criar links com locale
   const createLocalizedLink = (path: string) => {
     return `/${language}${path}`;
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setToday(new Date());
+    }, 1000 * 60 * 60 * 24);
+    return () => clearInterval(interval);
+  }, []);
+
+  const formatDuration = (startDate: Date) => {
+    const diffMs = today.getTime() - startDate.getTime();
+    const totalWeeks = Math.max(0, Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7)));
+    if (totalWeeks < 4) {
+      return {
+        value: totalWeeks,
+        unit: totalWeeks === 1 ? t("home.metrics.unitWeek") : t("home.metrics.unitWeeks")
+      };
+    }
+
+    const totalMonths = Math.max(0, Math.floor(diffMs / (1000 * 60 * 60 * 24 * 30.4375)));
+    if (totalMonths < 12) {
+      return {
+        value: totalMonths,
+        unit: totalMonths === 1 ? t("home.metrics.unitMonth") : t("home.metrics.unitMonths")
+      };
+    }
+
+    const totalYears = Math.max(0, Math.floor(totalMonths / 12));
+    return {
+      value: totalYears,
+      unit: totalYears === 1 ? t("home.metrics.unitYear") : t("home.metrics.unitYears")
+    };
+  };
+
+
   return (
-    <Column fillWidth gap="xl" paddingY="xl" style={{ minHeight: "100vh" }}>
-      {/* Premium Hero Section */}
-      <Column 
-        fillWidth 
-        horizontal="center" 
-        gap="xl" 
-        paddingY="xl"
-        style={{
-          background: "linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 50%, rgba(240, 147, 251, 0.08) 100%)",
-          borderRadius: "40px",
-          border: "1px solid rgba(255, 255, 255, 0.1)",
-          backdropFilter: "blur(20px)",
-          position: "relative",
-          overflow: "hidden"
-        }}
-      >
-        {/* Animated Background Effects */}
-        <div style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: "100%",
-          background: "radial-gradient(circle at 30% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(240, 147, 251, 0.1) 0%, transparent 50%)",
-          opacity: 0.6,
-          pointerEvents: "none",
-          animation: "heroBackgroundShift 12s ease-in-out infinite"
-        }} />
+    <Column fillWidth gap="xl" className="home-shell" style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <section id="home" className="hero-section">
+        <div className="hero-grid">
+          <Column gap="l" style={{ position: "relative", zIndex: 1 }}>
+            <Text className="section-kicker">{t("header.portfolio")}</Text>
+            <Heading as="h1" variant="display-strong-xl" className="hero-title">
+              <span className="hero-accent">{t("home.hero.headline")}</span>
+            </Heading>
+            <Text variant="body-default-l" className="hero-subtitle">
+              {t("home.hero.subline")}
+            </Text>
+          </Column>
 
-        {/* Floating Particles Effect */}
-        <div style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: "100%",
-          background: "radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%), radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 20%)",
-          opacity: 0.3,
-          pointerEvents: "none",
-          animation: "heroParticleFloat 18s ease-in-out infinite"
-        }} />
+          <Column className="hero-panel" style={{ position: "relative", zIndex: 1 }}>
+            <Flex horizontal="start" gap="m" vertical="center">
+              <Avatar size="xl" src={person.avatar} />
+              <Column gap="xs">
+                <Heading as="h2" variant="heading-strong-l">
+                  {person.name}
+                </Heading>
+                <Text variant="body-default-m" onBackground="neutral-weak">
+                  {t("about.role")}
+                </Text>
+              </Column>
+            </Flex>
+            <Text variant="body-default-m" onBackground="neutral-weak">
+              {t("about.description")}
+            </Text>
+            <div className="hero-metrics">
+              {(() => {
+                const devDuration = formatDuration(devStart);
+                return (
+                  <div className="hero-metric">
+                    <Text className="hero-metric-label">{t("home.metrics.devLabel")}</Text>
+                    <Heading as="h3" variant="heading-strong-l" className="hero-metric-value">
+                      {devDuration.value}
+                    </Heading>
+                    <Text className="hero-metric-unit">{devDuration.unit}</Text>
+                  </div>
+                );
+              })()}
+              {(() => {
+                const pentestDuration = formatDuration(pentestStart);
+                return (
+                  <div className="hero-metric">
+                    <Text className="hero-metric-label">{t("home.metrics.pentestLabel")}</Text>
+                    <Heading as="h3" variant="heading-strong-l" className="hero-metric-value">
+                      {pentestDuration.value}
+                    </Heading>
+                    <Text className="hero-metric-unit">{pentestDuration.unit}</Text>
+                  </div>
+                );
+              })()}
+            </div>
+          </Column>
+        </div>
+      </section>
 
-        {/* Hero Content */}
-        <Column gap="xl" horizontal="center" style={{ position: "relative", zIndex: 1 }}>
-          <Heading 
-            as="h1" 
-            variant="display-strong-xl" 
-            align="center"
-            style={{
-              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              textShadow: "0 8px 16px rgba(0, 0, 0, 0.3)",
-              fontSize: "clamp(2.5rem, 5vw, 4rem)",
-              fontWeight: "900",
-              lineHeight: "1.2",
-              maxWidth: "900px"
-            }}
-          >
-            {t('home.hero.headline')}
+      <section id="about" className="section-block section-about">
+        <Column gap="m">
+          <Text className="section-kicker">{t("navigation.about")}</Text>
+          <Heading as="h2" variant="heading-strong-l" className="section-title">
+            {t("about.title")}
           </Heading>
-          
-          <Text 
-            variant="body-default-xl" 
-            align="center" 
-            onBackground="neutral-weak"
-            style={{ 
-              maxWidth: "800px",
-              lineHeight: "1.8",
-              background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              fontWeight: "500",
-              textShadow: "0 4px 8px rgba(0, 0, 0, 0.2)"
-            }}
-          >
-            {t('home.hero.subline')}
+          <Text variant="body-default-l" className="section-description">
+            {t("about.introduction.description")}
           </Text>
-
-          {/* Premium Action Buttons */}
-          <Flex horizontal="center" gap="l" wrap>
-            <Link href={createLocalizedLink("/work")} style={{ textDecoration: "none" }}>
-              <Button
-                variant="primary"
-                size="l"
-                style={{
-                  borderRadius: "30px",
-                  padding: "16px 32px",
-                  fontSize: "1.1rem",
-                  fontWeight: "700",
-                  background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                  boxShadow: "0 12px 35px rgba(102, 126, 234, 0.4), 0 4px 15px rgba(0, 0, 0, 0.2)",
-                  border: "2px solid rgba(102, 126, 234, 0.3)",
-                  backdropFilter: "blur(20px)",
-                  transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                  transform: "translateY(0)"
-                }}
-                onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.currentTarget.style.transform = "translateY(-4px) scale(1.05)";
-                  e.currentTarget.style.boxShadow = "0 20px 45px rgba(102, 126, 234, 0.5), 0 8px 20px rgba(0, 0, 0, 0.3)";
-                }}
-                onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.currentTarget.style.transform = "translateY(0) scale(1)";
-                  e.currentTarget.style.boxShadow = "0 12px 35px rgba(102, 126, 234, 0.4), 0 4px 15px rgba(0, 0, 0, 0.2)";
-                }}
-              >
-                {t('home.hero.viewWriteups')}
-              </Button>
-            </Link>
-
-            <Link href={createLocalizedLink("/about")} style={{ textDecoration: "none" }}>
-              <Button
-                variant="secondary"
-                size="l"
-                style={{
-                  borderRadius: "30px",
-                  padding: "16px 32px",
-                  fontSize: "1.1rem",
-                  fontWeight: "700",
-                  background: "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)",
-                  border: "2px solid rgba(255, 255, 255, 0.2)",
-                  backdropFilter: "blur(20px)",
-                  transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                  transform: "translateY(0)"
-                }}
-                onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.currentTarget.style.transform = "translateY(-4px) scale(1.05)";
-                  e.currentTarget.style.background = "linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%)";
-                }}
-                onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.currentTarget.style.transform = "translateY(0) scale(1)";
-                  e.currentTarget.style.background = "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)";
-                }}
-              >
-                {t('home.hero.aboutMe')}
-              </Button>
-            </Link>
-          </Flex>
         </Column>
-      </Column>
+
+        <AboutContent />
+      </section>
+
+      <section id="work" className="section-block section-work">
+        <Column gap="m">
+          <Text className="section-kicker">{t("navigation.writeups")}</Text>
+          <Heading as="h2" variant="heading-strong-l" className="section-title">
+            {t("work.title")}
+          </Heading>
+          <Text variant="body-default-l" className="section-description">
+            {t("work.subtitle")}
+          </Text>
+        </Column>
+        <RecentWriteups />
+      </section>
+
+      <section id="certifications" className="section-block section-certifications">
+        <Column gap="m">
+          <Text className="section-kicker">{t("navigation.certifications")}</Text>
+          <Heading as="h2" variant="heading-strong-l" className="section-title">
+            {t("certifications.title")}
+          </Heading>
+          <Text variant="body-default-l" className="section-description">
+            {t("certifications.description")}
+          </Text>
+        </Column>
+        <CertificationsCarousel />
+      </section>
+
+      <section id="contact" className="section-block section-contact">
+        <Column gap="m">
+          <Text className="section-kicker">{t("contact.kicker")}</Text>
+          <Heading as="h2" variant="heading-strong-l" className="section-title">
+            {t("contact.title")}
+          </Heading>
+          <Text variant="body-default-l" className="section-description">
+            {t("contact.subtitle")}
+          </Text>
+        </Column>
+        <div className="contact-grid">
+          <Link href={contact.email} style={{ textDecoration: "none" }}>
+            <Button variant="secondary" size="l" prefixIcon="email" className="contact-card">
+              {t("contact.email")}
+            </Button>
+          </Link>
+          <Link href={contact.whatsapp} style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+            <Button variant="secondary" size="l" prefixIcon="whatsapp" className="contact-card">
+              {t("contact.whatsapp")}
+            </Button>
+          </Link>
+          <Link href={contact.instagram} style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+            <Button variant="secondary" size="l" prefixIcon="instagram" className="contact-card">
+              {t("contact.instagram")}
+            </Button>
+          </Link>
+          <Link href={contact.linkedin} style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+            <Button variant="secondary" size="l" prefixIcon="linkedin" className="contact-card contact-card--wide">
+              {t("contact.linkedin")}
+            </Button>
+          </Link>
+          <Link href={contact.github} style={{ textDecoration: "none" }} target="_blank" rel="noreferrer">
+            <Button variant="secondary" size="l" prefixIcon="github" className="contact-card contact-card--wide">
+              {t("contact.github")}
+            </Button>
+          </Link>
+        </div>
+      </section>
     </Column>
   );
-} 
+}

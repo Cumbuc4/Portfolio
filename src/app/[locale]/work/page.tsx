@@ -1,5 +1,10 @@
-import WorkPage from '@/components/WorkPage';
+import { redirect } from "next/navigation";
 
-export default function Page() {
-  return <WorkPage />;
-} 
+export default async function Page({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  redirect(`/${locale}#work`);
+}

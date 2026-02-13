@@ -44,13 +44,21 @@ const social = [
   },
 ];
 
+const contact = {
+  email: `mailto:${person.email}`,
+  whatsapp: "https://wa.me/5562985200918",
+  instagram: "https://instagram.com/seu_usuario",
+  linkedin: "https://www.linkedin.com/in/leandro--gabriel/",
+  github: "https://github.com/lg-bueno",
+};
+
 const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: "Especialista em Cibersegurança & Desenvolvedor Full Stack",
+  headline: "Red Team Operator & Desenvolvedor Full Stack",
   featured: {
     display: false,
     title: "Recent project: Once UI",
@@ -91,7 +99,7 @@ const about = {
       {
         company: "NOX5 Offensive Security",
         timeframe: "2024 - Presente",
-        role: "Técnico de Segurança da Informação",
+        role: "Junior - Red Team",
         achievements: [
           <>
             Administração e otimização de ambientes Active Directory e Microsoft 365 para gestão de identidades e acessos corporativos.
@@ -188,4 +196,4 @@ const certifications = {
   description: `Credenciais e reconhecimentos em segurança da informação`,
 };
 
-export { person, social, newsletter, home, about, work, certifications };
+export { person, social, contact, newsletter, home, about, work, certifications };

@@ -1,0 +1,64 @@
+---
+title: "HTB Expressway - Write-up"
+publishedAt: "2025-03-01"
+summary: "Write-up da maquina Expressway (Easy) do Hack The Box, com foco em VPN IPSec, quebra de PSK e escalacao via CVE-2025-32463."
+images:
+  - "htb_expressway_cover"
+team:
+  - name: "Leandro Gabriel"
+    role: "Security Researcher"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/leandro--gabriel/"
+---
+
+## Visao geral
+
+Acabei de resolver a maquina Expressway do Hack The Box (Easy). O cenario explora IPSec com IKE/XAUTH e culmina em uma escalacao de privilegios no sudo (CVE-2025-32463).
+
+## Resumo da exploracao
+
+### Reconhecimento
+
+- Apenas SSH exposto no TCP
+- Scan UDP mostrou 500 (ISAKMP) e 4500 (NAT-T) abertos
+- Identificacao de VPN IPSec com suporte a IKE/XAUTH
+
+### Ataque ao IKE/IPSec
+
+- Uso do `ike-scan` em modo agressivo para capturar o hash da PSK
+- Usuario IKE identificado: `ike@expressway.htb`
+- Quebra da PSK com `psk-crack` + rockyou
+
+### Tunel VPN
+
+- Configuracao do strongSwan
+- Necessidade de Aggressive Mode (Main Mode falhou)
+- Tunel estabelecido para acesso a rede interna
+
+### Acesso inicial
+
+- Reuso da PSK como credencial de SSH
+- Login como usuario de baixo privilegio
+
+### Escalacao de privilegios
+
+- Vulnerabilidade **CVE-2025-32463** no sudo (1.9.14 a 1.9.17)
+- Abuso da opcao `-R` (chroot) para bypass de seguranca
+- Exploit customizado para obter root
+
+## Ferramentas utilizadas
+
+- `nmap`
+- `ike-scan`
+- `psk-crack`
+- `strongSwan`
+- `sshpass`
+- exploit de `sudo`
+
+## Certificado HTB
+
+Conquista registrada: https://labs.hackthebox.com/achievement/machine/2295398/736
+
+## Post no LinkedIn
+
+https://www.linkedin.com/feed/update/urn:li:activity:7386854305619656705/?originTrackingId=5nWxBkUwwk5Vqc1umzCXIw%3D%3D

@@ -38,16 +38,15 @@ export function LanguageSelector() {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   const handleLanguageChange = (newLanguage: string) => {
     setLanguage(newLanguage as any);
     setIsOpen(false);
-    console.log(`Idioma alterado para: ${languageNames[newLanguage as keyof typeof languageNames]}`);
   };
 
   return (
@@ -56,21 +55,11 @@ export function LanguageSelector() {
         variant="tertiary"
         size="s"
         onClick={() => setIsOpen(!isOpen)}
-        style={{
-          borderRadius: "20px",
-          padding: "6px 12px",
-          fontSize: "12px",
-          fontWeight: "600",
-          background: "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)",
-          border: "1px solid rgba(255, 255, 255, 0.2)",
-          backdropFilter: "blur(10px)",
-          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-          minWidth: "80px"
-        }}
+        className="nav-button"
       >
         {languageCodes[language as keyof typeof languageCodes]}
       </Button>
-      
+
       {isOpen && (
         <Flex
           vertical="start"
@@ -79,12 +68,12 @@ export function LanguageSelector() {
             top: "100%",
             right: 0,
             marginTop: "8px",
-            background: "linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%)",
+            background: "var(--glass-2)",
             backdropFilter: "blur(20px)",
-            border: "1px solid rgba(255, 255, 255, 0.2)",
+            border: "1px solid var(--border-1)",
             borderRadius: "16px",
             padding: "8px",
-            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
+            boxShadow: "0 8px 32px rgba(6, 10, 12, 0.2)",
             zIndex: 1000,
             minWidth: "140px"
           }}
@@ -100,8 +89,8 @@ export function LanguageSelector() {
                 padding: "8px 12px",
                 fontSize: "12px",
                 fontWeight: "500",
-                background: code === language 
-                  ? "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" 
+                background: code === language
+                  ? "linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-amber) 100%)"
                   : "transparent",
                 border: "none",
                 width: "100%",
@@ -112,7 +101,7 @@ export function LanguageSelector() {
             >
               <Text
                 style={{
-                  color: code === language ? "#ffffff" : "rgba(255, 255, 255, 0.8)",
+                  color: code === language ? "#0f1a21" : "var(--text-strong)",
                   fontSize: "12px",
                   fontWeight: code === language ? "600" : "500"
                 }}
@@ -125,4 +114,4 @@ export function LanguageSelector() {
       )}
     </Flex>
   );
-} 
+}

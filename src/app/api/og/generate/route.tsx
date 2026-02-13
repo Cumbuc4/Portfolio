@@ -1,5 +1,7 @@
 import { ImageResponse } from "@vercel/og";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request: Request) {
   try {
     let url = new URL(request.url);

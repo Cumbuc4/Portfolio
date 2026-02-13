@@ -20,13 +20,23 @@
       "title": "최근 Write-ups",
       "subtitle": "보안, 펜테스팅, 개발에 관한 최신 기사와 Write-ups",
       "viewAll": "모두 보기"
+    },
+    "metrics": {
+      "devLabel": "개발 경험",
+      "pentestLabel": "펜테스트 경험",
+      "unitWeek": "주",
+      "unitWeeks": "주",
+      "unitMonth": "개월",
+      "unitMonths": "개월",
+      "unitYear": "년",
+      "unitYears": "년"
     }
   },
   "about": {
     "title": "소개",
     "description": "기술과 보안에 열정을 가진 사이버보안 전문가",
     "name": "레안드로 가브리엘",
-    "role": "사이버보안 전문가 & 풀스택 개발자",
+    "role": "레드팀 오퍼레이터 & 풀스택 개발자",
     "social": {
       "github": "🐙 GitHub",
       "linkedin": "💼 LinkedIn",
@@ -39,10 +49,10 @@
     "workExperience": {
       "title": "직업 경험",
       "currentJob": {
-        "title": "정보 보안 기술자",
+        "title": "Junior - Red Team",
         "company": "NOX5 Offensive Security",
         "period": "2024 - 현재",
-        "description1": "기업 ID 및 액세스 관리를 위한 Active Directory 및 Microsoft 365 환경 관리 및 최적화.",
+        "description1": "레드팀 및 펜테스트 활동을 수행하며 익스플로잇, 자동화, 기술 보고서에 집중.",
         "description2": "Fortinet 및 Sophos 방화벽을 사용한 네트워크 인프라 구성 및 보호, 고급 보안 정책 구현.",
         "description3": "보안 및 운영 작업 자동화를 위한 스크립트 개발, 회사 방어의 효율성과 복원력에 기여."
       },
@@ -74,6 +84,12 @@
     },
     "technicalSkills": {
       "title": "기술적 역량",
+      "groups": {
+        "programming": "프로그래밍",
+        "frameworks": "프레임워크",
+        "tools": "도구",
+        "security": "보안"
+      },
       "development": {
         "title": "개발",
         "python": "Python",
@@ -117,16 +133,40 @@
     "title": "자격증",
     "subtitle": "자격증 & 배지",
     "description": "기술과 보안 분야의 전문 자격증",
+    "stats": {
+      "total": "총 자격증",
+      "categories": "카테고리",
+      "issuers": "발급처"
+    },
     "viewCert": "자격증 보기",
     "issuedBy": "발급처"
   },
   "common": {
     "loading": "로딩 중...",
     "error": "로딩 오류",
-    "noData": "데이터를 찾을 수 없습니다"
+    "noData": "데이터를 찾을 수 없습니다",
+    "previous": "이전",
+    "next": "다음",
+    "comingSoon": "곧 공개",
+    "comingSoonSubtitle": "새 write-up 준비 중.",
+    "play": "재생",
+    "pause": "일시정지",
+    "showTimeline": "타임라인 보기",
+    "showMoreSkills": "더 많은 기술 보기",
+    "onThisPage": "이 페이지에서"
   },
   "footer": {
     "copyright": "모든 권리 보유.",
     "madeWith": "❤️와 Next.js로 제작"
+  },
+  "contact": {
+    "kicker": "연락처",
+    "title": "함께 이야기해요",
+    "subtitle": "연락할 채널을 선택하면 빠르게 답변하겠습니다.",
+    "email": "이메일 보내기",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
   }
-} 
+}

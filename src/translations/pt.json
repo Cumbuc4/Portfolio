@@ -11,7 +11,7 @@
   },
   "home": {
     "hero": {
-      "headline": "Especialista em Cibersegurança & Desenvolvedor Full Stack",
+      "headline": "Red Team Operator & Desenvolvedor Full Stack",
       "subline": "Transformando ideias em soluções digitais inovadoras com foco em segurança e performance",
       "viewWriteups": "Ver Write-ups",
       "aboutMe": "Sobre Mim"
@@ -20,13 +20,23 @@
       "title": "Write-ups Recentes",
       "subtitle": "Últimos artigos e write-ups sobre segurança, pentesting e desenvolvimento",
       "viewAll": "Ver Todos"
+    },
+    "metrics": {
+      "devLabel": "Experiência em desenvolvimento",
+      "pentestLabel": "Experiência em pentest",
+      "unitWeek": "semana",
+      "unitWeeks": "semanas",
+      "unitMonth": "mês",
+      "unitMonths": "meses",
+      "unitYear": "ano",
+      "unitYears": "anos"
     }
   },
   "about": {
     "title": "Sobre Mim",
     "description": "Especialista em cibersegurança e desenvolvedor apaixonado por tecnologia",
     "name": "Leandro Gabriel",
-    "role": "Cybersecurity Specialist & Full Stack Developer",
+    "role": "Red Team Operator & Desenvolvedor Full Stack",
     "social": {
       "github": "🐙 GitHub",
       "linkedin": "💼 LinkedIn",
@@ -39,10 +49,10 @@
     "workExperience": {
       "title": "Experiência Profissional",
       "currentJob": {
-        "title": "Técnico de Segurança da Informação",
+        "title": "Junior - Red Team",
         "company": "NOX5 Offensive Security",
         "period": "2024 - Presente",
-        "description1": "Administração e otimização de ambientes Active Directory e Microsoft 365 para gestão de identidades e acessos corporativos.",
+        "description1": "Atuação em Red Team e pentest, com foco em exploração, automação e relatórios técnicos.",
         "description2": "Configuração e proteção de infraestrutura de rede com firewalls Fortinet e Sophos, implementando políticas de segurança avançadas.",
         "description3": "Desenvolvimento de scripts para automação de tarefas de segurança e operação, contribuindo para a eficiência e resiliência da defesa da empresa."
       },
@@ -74,6 +84,12 @@
     },
     "technicalSkills": {
       "title": "Competências Técnicas",
+      "groups": {
+        "programming": "Programação",
+        "frameworks": "Frameworks",
+        "tools": "Ferramentas",
+        "security": "Segurança"
+      },
       "development": {
         "title": "Desenvolvimento",
         "python": "Python",
@@ -117,16 +133,40 @@
     "title": "Certificações",
     "subtitle": "Certificações & Badges",
     "description": "Certificações profissionais em tecnologia e segurança",
+    "stats": {
+      "total": "Total de certificados",
+      "categories": "Categorias",
+      "issuers": "Emissores"
+    },
     "viewCert": "Ver Certificações",
     "issuedBy": "Emitidas por"
   },
   "common": {
     "loading": "Carregando...",
     "error": "Erro ao carregar",
-    "noData": "Nenhum dado encontrado"
+    "noData": "Nenhum dado encontrado",
+    "previous": "Anterior",
+    "next": "Próximo",
+    "comingSoon": "Em breve",
+    "comingSoonSubtitle": "Novo write-up chegando.",
+    "play": "Reproduzir",
+    "pause": "Pausar",
+    "showTimeline": "Ver linha do tempo",
+    "showMoreSkills": "Ver mais competências",
+    "onThisPage": "Nesta página"
   },
   "footer": {
     "copyright": "Todos os direitos reservados.",
     "madeWith": "Feito com ❤️ e Next.js"
+  },
+  "contact": {
+    "kicker": "Contato",
+    "title": "Vamos conversar",
+    "subtitle": "Escolha um canal para falar comigo e responder rapidamente.",
+    "email": "Enviar e-mail",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
   }
-} 
+}

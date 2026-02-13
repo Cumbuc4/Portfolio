@@ -49,7 +49,7 @@ const contact = {
   whatsapp: "https://wa.me/5562985200918",
   instagram: "https://instagram.com/seu_usuario",
   linkedin: "https://www.linkedin.com/in/leandro--gabriel/",
-  github: "https://github.com/lg-bueno",
+  github: "https://github.com/Cumbuc4",
 };
 
 const home = {
